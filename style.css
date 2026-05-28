@@ -37,7 +37,7 @@ header {
 
 .menu {
     display: flex;
-    gap: 110px;
+    gap: 90px;
 }
 
 .nav-btn {
@@ -76,24 +76,31 @@ header {
     background: #f7f4df;
 }
 
+/* RESPONSIVIDADE MELHORADA */
+
 .journey-content {
     position: sticky;
-    top: 70px;
+    top: 78px;
 
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 78px);
 
-    max-width: 1600px;
+    max-width: 1500px;
 
     margin: 0 auto;
 
-    padding: 70px 60px;
+    padding:
+        clamp(28px, 4vw, 70px)
+        clamp(24px, 4vw, 60px);
 
     display: grid;
-    grid-template-columns: 350px 1fr;
+
+    grid-template-columns:
+        minmax(260px, 0.32fr)
+        minmax(520px, 1fr);
 
     align-items: center;
 
-    gap: 80px;
+    gap: clamp(28px, 5vw, 80px);
 }
 
 /* TEXT SIDE */
@@ -106,37 +113,37 @@ header {
 .journey-text h4 {
     color: #008c32;
 
-    font-size: 26px;
+    font-size: clamp(18px, 1.7vw, 26px);
     font-weight: 800;
 
-    margin-bottom: 22px;
+    margin-bottom: clamp(14px, 2vw, 22px);
 }
 
 .journey-text h1 {
     font-family: 'Raleway', sans-serif;
 
-    font-size: 82px;
+    font-size: clamp(46px, 5vw, 82px);
     line-height: 0.95;
 
     color: #062d14;
 
-    margin-bottom: 60px;
+    margin-bottom: clamp(28px, 4vw, 60px);
 }
 
 .journey-text p {
-    font-size: 27px;
+    font-size: clamp(18px, 1.8vw, 27px);
     line-height: 1.2;
 
     color: #111;
 
-    margin-bottom: 38px;
+    margin-bottom: clamp(24px, 3vw, 38px);
 }
 
 /* BARS */
 
 .bars {
     display: flex;
-    margin-bottom: 110px;
+    margin-bottom: clamp(36px, 7vw, 110px);
 }
 
 .bar {
@@ -156,7 +163,7 @@ header {
 
 .person-box {
     width: 100%;
-    height: 78px;
+    height: clamp(58px, 5vw, 78px);
 
     border-radius: 22px;
     border: 2px solid rgba(0, 0, 0, 0.85);
@@ -176,7 +183,7 @@ header {
 .person-box span {
     display: inline-block;
 
-    font-size: 34px;
+    font-size: clamp(24px, 2.3vw, 34px);
     font-weight: 800;
 
     color: #062d14;
@@ -205,6 +212,8 @@ header {
 
     width: 100%;
     aspect-ratio: 16 / 9;
+
+    max-height: calc(100vh - 170px);
 
     border-radius: 28px;
     overflow: hidden;
@@ -313,7 +322,7 @@ header {
 .marker-label text {
     fill: white;
 
-    font-size: 20px;
+    font-size: clamp(14px, 1.2vw, 20px);
     font-weight: 800;
 
     letter-spacing: 0.4px;
@@ -366,11 +375,6 @@ header {
     border-radius: 50%;
 
     transform: translate(-50%, -50%);
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        border-color 0.3s ease;
 }
 
 .progress-dot:nth-child(2) {
@@ -594,6 +598,14 @@ header {
     flex-direction: column;
 }
 
+.white-card:hover {
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 16px 30px rgba(0,0,0,0.18);
+}
+
 .article-image {
     height: 180px;
 
@@ -697,17 +709,26 @@ footer {
     opacity: 0.65;
 }
 
-/* RESPONSIVO */
+/* NOTEBOOK */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
+
+    .menu {
+        gap: 60px;
+    }
 
     .journey-content {
-        grid-template-columns: 1fr;
-        gap: 50px;
+        grid-template-columns:
+            minmax(240px, 0.3fr)
+            minmax(500px, 1fr);
+
+        padding: 36px 44px;
+
+        gap: 44px;
     }
 
     .journey-text h1 {
-        font-size: 60px;
+        font-size: 58px;
     }
 
     .journey-text p {
@@ -715,7 +736,50 @@ footer {
     }
 
     .bars {
-        margin-bottom: 45px;
+        margin-bottom: 60px;
+    }
+}
+
+/* TABLET */
+
+@media (max-width: 1050px) {
+
+    .journey-content {
+        grid-template-columns: 1fr;
+
+        gap: 28px;
+
+        padding: 32px 28px;
+
+        align-content: center;
+    }
+
+    .journey-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .journey-text h1 {
+        font-size: 48px;
+        margin-bottom: 24px;
+    }
+
+    .journey-text p {
+        font-size: 19px;
+        margin-bottom: 22px;
+    }
+
+    .bars {
+        margin-bottom: 24px;
+    }
+
+    .person-box {
+        max-width: 320px;
+    }
+
+    .map-card {
+        width: 100%;
+        max-height: 52vh;
     }
 
     .data-cards {
@@ -728,8 +792,9 @@ footer {
 
         gap: 28px;
     }
-
 }
+
+/* MOBILE */
 
 @media (max-width: 700px) {
 
@@ -739,10 +804,18 @@ footer {
     }
 
     .menu {
+        gap: 12px;
+
         flex-wrap: wrap;
         justify-content: center;
+    }
 
-        gap: 20px;
+    .nav-btn {
+        padding: 9px 12px;
+    }
+
+    .nav-btn img {
+        width: 22px;
     }
 
     .nav-btn span {
@@ -750,53 +823,54 @@ footer {
     }
 
     .journey-content {
-        padding: 40px 22px;
+        top: 80px;
+
+        min-height: calc(100vh - 80px);
+
+        padding: 24px 16px;
     }
 
     .journey-text h4 {
-        font-size: 20px;
-    }
-
-    .journey-text h1 {
-        font-size: 46px;
-    }
-
-    .journey-text p {
         font-size: 18px;
     }
 
-    .bars {
-        margin-bottom: 32px;
+    .journey-text h1 {
+        font-size: 40px;
+    }
+
+    .journey-text p {
+        font-size: 16px;
     }
 
     .bar {
-        width: 80px;
+        width: 75px;
         height: 7px;
     }
 
     .person-box {
-        height: 68px;
+        height: 58px;
     }
 
     .person-box span {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .map-card {
-        border-radius: 20px;
+        border-radius: 18px;
+        max-height: 45vh;
     }
 
     .journey-progress {
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
 
-        height: 12px;
+        height: 10px;
     }
 
     .progress-dot {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
 
     .marker-label text {
@@ -840,5 +914,4 @@ footer {
     footer {
         height: 90px;
     }
-
 }
