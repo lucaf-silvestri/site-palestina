@@ -14,6 +14,100 @@ body {
     overflow-x: hidden;
 }
 
+.scroll-next {
+    position: fixed;
+
+    left: 50%;
+    bottom: 34px;
+
+    transform: translateX(-50%) translateY(0);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    z-index: 9999;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    opacity: 1;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+}
+
+.scroll-next.hidden {
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-50%) translateY(20px);
+}
+
+.scroll-next span {
+    padding: 9px 18px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 999px;
+
+    color: #006b2c;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.scroll-arrow {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #008c45;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+
+    animation: bounceArrow 1.4s infinite;
+}
+
+.scroll-arrow svg {
+    width: 22px;
+    height: 22px;
+
+    fill: none;
+    stroke: white;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+#dados {
+    scroll-margin-top: 90px;
+}
+
 /* HEADER */
 
 header {
@@ -61,12 +155,14 @@ header {
 /* JOURNEY SECTION */
 
 .journey-section {
-    position: relative;
-    min-height: 430vh;
     background:
-        radial-gradient(circle at 78% 42%, rgba(0, 140, 69, 0.08), transparent 34%),
-        radial-gradient(circle at 18% 75%, rgba(0, 140, 69, 0.05), transparent 28%),
-        #f7f4df;
+        linear-gradient(rgba(247, 244, 223, 0.76),
+            rgba(247, 244, 223, 0.76)),
+        url("https://get.pxhere.com/photo/palestine-religion-islam-jerusalem-Aqsa-dome-minaret-history-architecture-building-urban-area-cityscape-landmark-metropolitan-area-city-human-settlement-daytime-metropolis-town-sky-byzantine-architecture-skyline-roof-historic-site-tourism-place-of-worship-basilica-downtown-mosque-landscape-suburb-residential-area-world-tower-unesco-world-heritage-site-1598186.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .journey-content {
@@ -145,7 +241,7 @@ header {
 .bar {
     width: clamp(90px, 7vw, 130px);
     height: clamp(8px, 0.6vw, 11px);
-    border: 2px solid white;
+    border: 1px solid white;
 }
 
 .red {
@@ -471,7 +567,7 @@ header {
 }
 
 .brown-card h3 {
-    font-size: clamp(30px, 2.4vw, 42px);
+    font-size: clamp(30px, 2.4vw, 40px);
     line-height: 1;
     margin-bottom: clamp(55px, 5vw, 85px);
     font-weight: 700;
