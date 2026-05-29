@@ -16,15 +16,14 @@ body {
 
 .progress-dot {
     cursor: pointer;
+    z-index: 40;
 }
 
 .progress-dot:hover {
     background: #006b2c;
     border-color: #004d21;
 
-    transform:
-        translate(-50%, -50%)
-        scale(1.35);
+    transform: translate(-50%, -50%) scale(1.35);
 
     box-shadow:
         0 0 0 6px rgba(0, 140, 69, 0.18),
