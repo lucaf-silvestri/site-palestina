@@ -454,15 +454,27 @@
     steps.forEach(step => journeyObserver.observe(step));
 
     progressDots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-            if (!steps[index]) return;
+    dot.addEventListener("click", () => {
+        const section = document.querySelector(".journey-section");
 
-            steps[index].scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+        const sectionTop =
+            section.offsetTop;
+
+        const sectionHeight =
+            section.offsetHeight - window.innerHeight;
+
+        const targetPercent =
+            index / (people.length - 1);
+
+        const targetScroll =
+            sectionTop + sectionHeight * targetPercent;
+
+        window.scrollTo({
+            top: targetScroll,
+            behavior: "smooth"
         });
     });
+});
 
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
