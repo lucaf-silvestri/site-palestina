@@ -639,69 +639,6 @@ footer {
     opacity: 0.65;
 }
 
-/* TV / MONITORES MUITO GRANDES */
-
-@media (min-width: 1920px) {
-    header {
-        height: 88px;
-    }
-
-    .journey-content {
-        top: 88px;
-        min-height: calc(100vh - 88px);
-
-        max-width: 1900px;
-
-        grid-template-columns: minmax(360px, 0.34fr) minmax(820px, 1fr);
-
-        padding: 90px 90px;
-        gap: 110px;
-    }
-
-    .journey-text h1 {
-        font-size: 108px;
-    }
-
-    .journey-text h4 {
-        font-size: 32px;
-    }
-
-    .journey-text p {
-        font-size: 34px;
-    }
-
-    .person-box {
-        max-width: 390px;
-        height: 90px;
-    }
-
-    .person-box span {
-        font-size: 42px;
-    }
-
-    .map-card {
-        max-height: min(76vh, 900px);
-    }
-
-    .data-cards,
-    .article-cards {
-        max-width: 1500px;
-    }
-}
-
-/* DESKTOP FULL HD / MONITOR GRANDE */
-
-@media (max-width: 1919px) and (min-width: 1441px) {
-    .journey-content {
-        max-width: 1650px;
-        grid-template-columns: minmax(300px, 0.32fr) minmax(650px, 1fr);
-    }
-
-    .map-card {
-        max-height: min(72vh, 780px);
-    }
-}
-
 /* NOTEBOOK GRANDE */
 
 @media (max-width: 1440px) {
