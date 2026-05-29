@@ -18,7 +18,7 @@ body {
 
 header {
     height: 78px;
-    background: linear-gradient(90deg, #006b2c, #009640);
+    background: linear-gradient(90deg, #005322, #007b34);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,7 +63,11 @@ header {
 .journey-section {
     position: relative;
     min-height: 430vh;
-    background: #f7f4df;
+
+    background:
+        radial-gradient(circle at 72% 42%, rgba(0, 140, 69, 0.10), transparent 34%),
+        radial-gradient(circle at 18% 82%, rgba(0, 140, 69, 0.06), transparent 32%),
+        #f7f4df;
 }
 
 .journey-content {
@@ -88,11 +92,41 @@ header {
     flex-direction: column;
 }
 
+/* TAG / FRASE PLACEHOLDER */
+
+.hero-tag,
 .journey-text h4 {
-    color: #008c32;
-    font-size: clamp(20px, 1.45vw, 28px);
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+
+    padding: 14px 24px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 999px;
+
+    color: #007b34;
+
+    font-size: clamp(18px, 1.25vw, 24px);
     font-weight: 800;
-    margin-bottom: clamp(16px, 1.4vw, 24px);
+
+    margin-bottom: clamp(22px, 2vw, 34px);
+
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.hero-tag::before,
+.journey-text h4::before {
+    content: "";
+    width: 6px;
+    height: 24px;
+
+    background: #008c45;
+    border-radius: 999px;
+
+    margin-right: 14px;
 }
 
 .journey-text h1 {
@@ -119,7 +153,9 @@ header {
 
 .bar {
     width: clamp(90px, 7vw, 130px);
-    height: clamp(7px, 0.6vw, 10px);
+    height: clamp(8px, 0.7vw, 11px);
+    display: block;
+    border: 2px solid white;
 }
 
 .red {
@@ -136,14 +172,20 @@ header {
     width: 100%;
     max-width: 340px;
     height: clamp(62px, 4.7vw, 82px);
+
     border-radius: 22px;
-    border: 2px solid rgba(0, 0, 0, 0.85);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 0, 0, 0.35);
+
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .person-box span {
@@ -178,11 +220,59 @@ header {
     overflow: hidden;
 
     background: #f7f4df;
-    border: 1.5px solid rgba(0, 0, 0, 0.65);
+
+    border: 1px solid rgba(0, 0, 0, 0.22);
 
     box-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.16),
-        inset 0 0 20px rgba(0, 0, 0, 0.08);
+        0 35px 60px rgba(0, 0, 0, 0.10),
+        0 12px 25px rgba(0, 0, 0, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+}
+
+/* REFLEXO DO PRÓPRIO MAPA */
+
+.map-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("https://uploads.onecompiler.io/44qhqexem/44qhqdgvf/mapa-mundi-preto.png");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.035;
+
+    filter:
+        blur(2px)
+        grayscale(100%);
+
+    transform: scale(1.05);
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* DEGRADÊ VERDE LEVE */
+
+.map-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 90%,
+            rgba(0, 140, 69, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(0, 140, 69, 0.05),
+            transparent 30%
+        );
+
+    pointer-events: none;
+    z-index: 1;
 }
 
 .world-map,
@@ -195,6 +285,7 @@ header {
 
 .world-map {
     object-fit: cover;
+    z-index: 2;
 }
 
 .route-svg {
