@@ -217,7 +217,7 @@ header {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("https://uploads.onecompiler.io/44qhqexem/44qhqdgvf/mapa-mundi-preto.png");
+    background-image: url("img/mapa-mundi.png");
     background-size: cover;
     background-position: center;
     opacity: 0.035;
