@@ -270,6 +270,27 @@
 </footer>
 
     <script>
+        function updateProgressByScroll() {
+    const section = document.querySelector(".journey-section");
+    const rect = section.getBoundingClientRect();
+
+    const scrollableHeight = section.offsetHeight - window.innerHeight;
+    const scrolled = Math.min(
+        Math.max(-rect.top, 0),
+        scrollableHeight
+    );
+
+    const percent = (scrolled / scrollableHeight) * 100;
+
+    progressFill.style.width = `${percent}%`;
+
+    const stepPercent = 100 / (people.length - 1);
+
+    progressDots.forEach((dot, i) => {
+        dot.classList.toggle("active", percent >= i * stepPercent);
+    });
+}
+        
         const counters =
             document.querySelectorAll(".counter");
 
@@ -497,8 +518,6 @@
             personName.classList.remove("fade-out");
             personName.classList.add("fade-in");
 
-            updateProgress(index);
-
             route.forEach(place => {
                 markerGroup.insertAdjacentHTML(
                     "beforeend",
@@ -597,6 +616,11 @@
         steps.forEach(step => observer.observe(step));
 
         animatePerson(0);
+
+        window.addEventListener("scroll", updateProgressByScroll);
+window.addEventListener("resize", updateProgressByScroll);
+
+updateProgressByScroll();
     </script>
 
 </body>
