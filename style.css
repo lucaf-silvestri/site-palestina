@@ -1145,9 +1145,9 @@ footer {
     padding: 140px 5vw 80px;
 
     background:
-        linear-gradient(rgba(245, 242, 228, .82),
-            rgba(245, 242, 228, .82)),
-        url("img/jerusalem-bg.jpg");
+        linear-gradient(rgba(247, 244, 223, 0.76),
+            rgba(247, 244, 223, 0.76)),
+        url("https://get.pxhere.com/photo/palestine-religion-islam-jerusalem-Aqsa-dome-minaret-history-architecture-building-urban-area-cityscape-landmark-metropolitan-area-city-human-settlement-daytime-metropolis-town-sky-byzantine-architecture-skyline-roof-historic-site-tourism-place-of-worship-basilica-downtown-mosque-landscape-suburb-residential-area-world-tower-unesco-world-heritage-site-1598186.jpg");
 
     background-size: cover;
     background-position: center;
@@ -1191,8 +1191,8 @@ footer {
 .topic-bar {
     height: 8px;
     width: 90px;
-
     border-top: 1px solid rgba(255, 255, 255, .7);
+        border: 1px solid white;
 }
 
 .topic-red {
@@ -1204,13 +1204,9 @@ footer {
 }
 
 .topic-info p {
-    font-size: clamp(1.2rem, 1.4vw, 1.8rem);
-
-    line-height: 1.3;
-
+    font-size: clamp(18px, 24px, 30px);
+    line-height: 1.2;
     color: #111;
-
-    max-width: 340px;
 }
 
 /* VIDEO */
@@ -1321,7 +1317,7 @@ footer {
     font-size: 20px;
     font-weight: 800;
 
-    text-shadow: 0 3px 12px rgba(0,0,0,.8);
+    text-shadow: 0 3px 12px rgba(0, 0, 0, .8);
 }
 
 /* CONTEÚDO */
@@ -1339,48 +1335,52 @@ footer {
 
 .topic-text-card {
     background: rgba(255, 255, 255, .75);
-
     backdrop-filter: blur(10px);
-
     border-radius: 22px;
+    padding: 80px 50px 80px 50px;
+}
 
-    padding: 40px;
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, .12);
+.topic-text-card h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 18px 0;
 }
 
 .topic-text-card p {
-    font-size: 1.08rem;
+    margin-bottom: 22px;
 
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.8;
 
-    color: #222;
+    color: #2b2b2b;
+}
 
-    margin-bottom: 20px;
+.topic-text-card p:last-child {
+    margin-bottom: 0;
 }
 
 .topic-about-card {
     background: rgba(225, 235, 210, .85);
-
     backdrop-filter: blur(10px);
-
     border-radius: 22px;
-
     padding: 40px;
+}
 
+.topic-text-card,
+.topic-about-card {
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, .12);
+        0 30px 70px rgba(0, 0, 0, 0.22),
+        0 10px 25px rgba(0, 0, 0, 0.10);
 }
 
 .topic-about-card h2 {
     font-family: 'Raleway', sans-serif;
-
     font-size: 2rem;
-
     color: #002d12;
-
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* RESPONSIVO */
