@@ -72,6 +72,7 @@
                     <g id="routeGroup"></g>
                     <g id="markerGroup"></g>
                 </svg>
+
                 <div class="journey-progress">
                     <div class="journey-progress-fill" id="journeyProgressFill"></div>
 
@@ -81,18 +82,17 @@
                     <div class="progress-dot" data-index="3"></div>
                     <div class="progress-dot" data-index="4"></div>
                 </div>
+
             </div>
 
         </div>
 
         <a href="#dados" class="scroll-next">
-            <span>Visualizar dados</span>
+            <span>Visualizar Dados</span>
 
-            <div class="scroll-arrow">
-                <svg viewBox="0 0 24 24">
-                    <path d="M7 10L12 15L17 10" />
-                </svg>
-            </div>
+            <svg viewBox="0 0 24 24">
+                <path d="M7 10L12 15L17 10" />
+            </svg>
         </a>
 
         <div class="journey-steps">
@@ -102,6 +102,7 @@
             <div class="journey-step"></div>
             <div class="journey-step"></div>
         </div>
+
     </section>
 
     <section class="data-section" id="dados">
@@ -110,45 +111,66 @@
             <div class="brown-card">
                 <div class="card-header">
                     <img src="img/icone-populacao.png" alt="">
-                    <span>População</span>
+                    <span>Palestinos no mundo</span>
                 </div>
 
-                <h3 class="counter" data-target="10">0 bilhões</h3>
+                <h3 class="counter" data-target="15.2" data-decimals="1" data-suffix=" milhões">
+                    0 milhões
+                </h3>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>De acordo com PCBS.</p>
             </div>
 
             <div class="brown-card">
                 <div class="card-header">
                     <img src="img/icone-populacao.png" alt="">
-                    <span>População</span>
+                    <span>Palestinos no Estado da Palestina (Cisjordânia e Gaza)</span>
                 </div>
 
-                <h3 class="counter" data-target="10">0 bilhões</h3>
+                <h3 class="counter" data-target="5.61" data-decimals="2" data-suffix=" milhões">
+                    0 milhões
+                </h3>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>De acordo com PCBS.</p>
             </div>
 
             <div class="brown-card">
                 <div class="card-header">
                     <img src="img/icone-populacao.png" alt="">
-                    <span>População</span>
+                    <span>Palestinos nos territórios de 1948 (O que hoje é Israel)</span>
                 </div>
 
-                <h3 class="counter" data-target="10">0 bilhões</h3>
+                <h3 class="counter" data-target="1.9" data-decimals="1" data-suffix=" milhão">
+                    0 milhão
+                </h3>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>De acordo com PCBS.</p>
             </div>
 
             <div class="brown-card">
                 <div class="card-header">
                     <img src="img/icone-populacao.png" alt="">
-                    <span>População</span>
+                    <span>Palestinos fora da Palestina histórica</span>
                 </div>
 
-                <h3 class="counter" data-target="10">0 bilhões</h3>
+                <h3 class="counter" data-target="7.8" data-decimals="1" data-suffix=" milhões">
+                    0 milhões
+                </h3>
 
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>De acordo com PCBS.</p>
+            </div>
+
+            <div class="brown-card">
+                <div class="card-header">
+                    <img src="img/icone-populacao.png" alt="">
+                    <span>Palestinos no Brasil</span>
+                </div>
+
+                <h3 class="counter range-counter" data-min="400" data-max="600" data-suffix=" mil">
+                    0 - 0 mil
+                </h3>
+
+                <p>IBOPE e IBOPE Inteligência.</p>
             </div>
 
         </div>
@@ -176,7 +198,7 @@
 
                 <div class="article-content">
                     <h3>Tema do Card</h3>
-                    <a href="#" class="article-btn">Visualizar</a>
+                    <a href="materia.html" class="article-btn">Visualizar</a>
                 </div>
             </div>
 
@@ -283,6 +305,12 @@
             markerGroup.innerHTML = "";
         }
 
+        function formatDecimal(value, decimals) {
+            return value
+                .toFixed(decimals)
+                .replace(".", ",");
+        }
+
         function getScrollData() {
             const section = document.querySelector(".journey-section");
             const rect = section.getBoundingClientRect();
@@ -353,27 +381,27 @@
             const width = place.length > 12 ? 220 : 120;
 
             return `
-            <g class="marker">
-                <circle cx="${point.x}" cy="${point.y}" r="8" fill="${color}" />
+                <g class="marker">
+                    <circle cx="${point.x}" cy="${point.y}" r="8" fill="${color}" />
 
-                <g class="marker-label">
-                    <rect
-                        x="${point.x + 13}"
-                        y="${point.y - 27}"
-                        width="${width}"
-                        height="38"
-                        fill="${color}"
-                    />
+                    <g class="marker-label">
+                        <rect
+                            x="${point.x + 13}"
+                            y="${point.y - 27}"
+                            width="${width}"
+                            height="38"
+                            fill="${color}"
+                        />
 
-                    <text
-                        x="${point.x + 30}"
-                        y="${point.y - 2}"
-                    >
-                        ${place}
-                    </text>
+                        <text
+                            x="${point.x + 30}"
+                            y="${point.y - 2}"
+                        >
+                            ${place}
+                        </text>
+                    </g>
                 </g>
-            </g>
-        `;
+            `;
         }
 
         async function animatePerson(index) {
@@ -432,23 +460,23 @@
                 const revealId = `reveal-${index}-${i}`;
 
                 svgDefs.insertAdjacentHTML("beforeend", `
-                <mask
-                    id="${maskId}"
-                    maskUnits="userSpaceOnUse"
-                    x="0"
-                    y="0"
-                    width="1000"
-                    height="500"
-                >
-                    <rect x="0" y="0" width="1000" height="500" fill="black" />
+                    <mask
+                        id="${maskId}"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="1000"
+                        height="500"
+                    >
+                        <rect x="0" y="0" width="1000" height="500" fill="black" />
 
-                    <path
-                        id="${revealId}"
-                        class="reveal-line"
-                        d="${pathD}"
-                    />
-                </mask>
-            `);
+                        <path
+                            id="${revealId}"
+                            class="reveal-line"
+                            d="${pathD}"
+                        />
+                    </mask>
+                `);
 
                 const reveal = document.getElementById(revealId);
                 const length = reveal.getTotalLength();
@@ -458,13 +486,13 @@
                 reveal.style.transition = "none";
 
                 routeGroup.insertAdjacentHTML("beforeend", `
-                <path
-                    class="route-line"
-                    d="${pathD}"
-                    stroke="${person.color}"
-                    mask="url(#${maskId})"
-                />
-            `);
+                    <path
+                        class="route-line"
+                        d="${pathD}"
+                        stroke="${person.color}"
+                        mask="url(#${maskId})"
+                    />
+                `);
 
                 await wait(80);
 
@@ -500,31 +528,49 @@
 
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = +counter.dataset.target;
+                if (!entry.isIntersecting) return;
 
-                    let current = 0;
-                    const duration = 450;
-                    const increment = target / (duration / 16);
+                const counter = entry.target;
 
-                    const updateCounter = () => {
-                        current += increment;
+                let start = null;
+                const duration = 900;
 
-                        if (current >= target) {
-                            current = target;
-                        }
+                function animateCounter(timestamp) {
+                    if (!start) start = timestamp;
 
-                        counter.innerHTML = `${Math.floor(current)} bilhões`;
+                    const progress = Math.min((timestamp - start) / duration, 1);
 
-                        if (current < target) {
-                            requestAnimationFrame(updateCounter);
-                        }
-                    };
+                    const eased =
+                        1 - Math.pow(1 - progress, 3);
 
-                    updateCounter();
-                    counterObserver.unobserve(counter);
+                    if (counter.classList.contains("range-counter")) {
+                        const minTarget = parseFloat(counter.dataset.min);
+                        const maxTarget = parseFloat(counter.dataset.max);
+                        const suffix = counter.dataset.suffix || "";
+
+                        const currentMin = Math.floor(minTarget * eased);
+                        const currentMax = Math.floor(maxTarget * eased);
+
+                        counter.textContent =
+                            `${currentMin} - ${currentMax}${suffix}`;
+                    } else {
+                        const target = parseFloat(counter.dataset.target);
+                        const decimals = parseInt(counter.dataset.decimals || "0");
+                        const suffix = counter.dataset.suffix || "";
+
+                        const current = target * eased;
+
+                        counter.textContent =
+                            `${formatDecimal(current, decimals)}${suffix}`;
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateCounter);
+                    }
                 }
+
+                requestAnimationFrame(animateCounter);
+                counterObserver.unobserve(counter);
             });
         }, {
             threshold: 0.4
