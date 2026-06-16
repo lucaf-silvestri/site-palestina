@@ -17,13 +17,19 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body id="inicio">
 
     <header>
         <nav class="menu">
-            <a href="#mapa" class="nav-btn">
+
+            <a href="#inicio" class="nav-btn">
                 <img src="img/icone-home.png" alt="">
                 <span>Início</span>
+            </a>
+
+            <a href="#mapa" class="nav-btn">
+                <img src="img/icone-mapa.png" alt="">
+                <span>Mapa</span>
             </a>
 
             <a href="#dados" class="nav-btn">
@@ -35,17 +41,48 @@
                 <img src="img/icone-materias.png" alt="">
                 <span>Matérias</span>
             </a>
+
         </nav>
     </header>
+
+    <section class="hero-banner" >
+
+        <div class="hero-overlay"></div>
+
+        <img src="img/hero.jpg" alt="Jerusalém" class="hero-image">
+
+        <div class="hero-content">
+
+            <div class="hero-pill">
+                <span>Palestina</span>
+            </div>
+
+            <h1>
+                Título<br>
+                Principal
+            </h1>
+
+            <p>
+                Conheça as jornadas de palestinos ao redor do mundo e os dados
+                que ajudam a compreender a sua dimensão
+            </p>
+
+            <div class="bars">
+                <div class="bar red"></div>
+                <div class="bar green"></div>
+            </div>
+
+        </div>
+
+    </section>
 
     <section class="journey-section" id="mapa">
 
         <div class="journey-content">
 
             <div class="journey-text">
-                <div class="hero-tag">Frase placeholder</div>
 
-                <h1>Título<br>Principal</h1>
+                <h1>Mapa<br>Interativo</h1>
 
                 <p>
                     Role a tela para baixo<br>
@@ -53,13 +90,14 @@
                     diferentes jornadas
                 </p>
 
-                <div class="bars">
-                    <span class="bar red"></span>
-                    <span class="bar green"></span>
-                </div>
+                <div class="person-card">
+                    <span class="person-card-label">
+                        Jornada de
+                    </span>
 
-                <div class="person-box">
-                    <span id="personName">Akram</span>
+                    <span class="person-card-name" id="personName">
+                        Miassar
+                    </span>
                 </div>
             </div>
 
@@ -294,6 +332,7 @@
 
         let activeIndex = -1;
         let animationToken = 0;
+        let nameAnimationToken = 0;
 
         function wait(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -306,9 +345,24 @@
         }
 
         function formatDecimal(value, decimals) {
-            return value
-                .toFixed(decimals)
-                .replace(".", ",");
+            return value.toFixed(decimals).replace(".", ",");
+        }
+
+        async function updatePersonName(name) {
+            nameAnimationToken++;
+            const token = nameAnimationToken;
+
+            personName.classList.add("fade");
+
+            await wait(300);
+
+            if (token !== nameAnimationToken) return;
+
+            personName.textContent = name;
+
+            requestAnimationFrame(() => {
+                personName.classList.remove("fade");
+            });
         }
 
         function getScrollData() {
@@ -338,7 +392,6 @@
             const { percent } = getScrollData();
 
             const progressPercent = percent * 100;
-
             progressFill.style.width = `${progressPercent}%`;
 
             const stepPercent = 100 / (people.length - 1);
@@ -357,13 +410,9 @@
             const { percent } = getScrollData();
 
             const totalSteps = people.length - 1;
-
             const index = Math.floor(percent * totalSteps + 0.01);
 
-            return Math.min(
-                Math.max(index, 0),
-                people.length - 1
-            );
+            return Math.min(Math.max(index, 0), people.length - 1);
         }
 
         function updateJourneyByScroll() {
@@ -381,27 +430,27 @@
             const width = place.length > 12 ? 220 : 120;
 
             return `
-                <g class="marker">
-                    <circle cx="${point.x}" cy="${point.y}" r="8" fill="${color}" />
+            <g class="marker">
+                <circle cx="${point.x}" cy="${point.y}" r="8" fill="${color}" />
 
-                    <g class="marker-label">
-                        <rect
-                            x="${point.x + 13}"
-                            y="${point.y - 27}"
-                            width="${width}"
-                            height="38"
-                            fill="${color}"
-                        />
+                <g class="marker-label">
+                    <rect
+                        x="${point.x + 13}"
+                        y="${point.y - 27}"
+                        width="${width}"
+                        height="38"
+                        fill="${color}"
+                    />
 
-                        <text
-                            x="${point.x + 30}"
-                            y="${point.y - 2}"
-                        >
-                            ${place}
-                        </text>
-                    </g>
+                    <text
+                        x="${point.x + 30}"
+                        y="${point.y - 2}"
+                    >
+                        ${place}
+                    </text>
                 </g>
-            `;
+            </g>
+        `;
         }
 
         async function animatePerson(index) {
@@ -409,26 +458,19 @@
             const token = animationToken;
 
             const svg = document.querySelector(".route-svg");
+            const person = people[index];
+            const route = person.route;
 
             svg.classList.remove("fade-in");
             svg.classList.add("fade-out");
 
-            personName.classList.remove("fade-in");
-            personName.classList.add("fade-out");
+            updatePersonName(person.name);
 
             await wait(350);
 
             if (token !== animationToken) return;
 
             clearMap();
-
-            const person = people[index];
-            const route = person.route;
-
-            personName.textContent = person.name;
-
-            personName.classList.remove("fade-out");
-            personName.classList.add("fade-in");
 
             route.forEach(place => {
                 markerGroup.insertAdjacentHTML(
@@ -460,23 +502,23 @@
                 const revealId = `reveal-${index}-${i}`;
 
                 svgDefs.insertAdjacentHTML("beforeend", `
-                    <mask
-                        id="${maskId}"
-                        maskUnits="userSpaceOnUse"
-                        x="0"
-                        y="0"
-                        width="1000"
-                        height="500"
-                    >
-                        <rect x="0" y="0" width="1000" height="500" fill="black" />
+                <mask
+                    id="${maskId}"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="1000"
+                    height="500"
+                >
+                    <rect x="0" y="0" width="1000" height="500" fill="black" />
 
-                        <path
-                            id="${revealId}"
-                            class="reveal-line"
-                            d="${pathD}"
-                        />
-                    </mask>
-                `);
+                    <path
+                        id="${revealId}"
+                        class="reveal-line"
+                        d="${pathD}"
+                    />
+                </mask>
+            `);
 
                 const reveal = document.getElementById(revealId);
                 const length = reveal.getTotalLength();
@@ -486,13 +528,13 @@
                 reveal.style.transition = "none";
 
                 routeGroup.insertAdjacentHTML("beforeend", `
-                    <path
-                        class="route-line"
-                        d="${pathD}"
-                        stroke="${person.color}"
-                        mask="url(#${maskId})"
-                    />
-                `);
+                <path
+                    class="route-line"
+                    d="${pathD}"
+                    stroke="${person.color}"
+                    mask="url(#${maskId})"
+                />
+            `);
 
                 await wait(80);
 
@@ -513,11 +555,8 @@
             dot.addEventListener("click", () => {
                 const { section, scrollableHeight } = getScrollData();
 
-                const targetPercent =
-                    index / (people.length - 1);
-
-                const targetScroll =
-                    section.offsetTop + scrollableHeight * targetPercent;
+                const targetPercent = index / (people.length - 1);
+                const targetScroll = section.offsetTop + scrollableHeight * targetPercent;
 
                 window.scrollTo({
                     top: targetScroll,
@@ -539,9 +578,7 @@
                     if (!start) start = timestamp;
 
                     const progress = Math.min((timestamp - start) / duration, 1);
-
-                    const eased =
-                        1 - Math.pow(1 - progress, 3);
+                    const eased = 1 - Math.pow(1 - progress, 3);
 
                     if (counter.classList.contains("range-counter")) {
                         const minTarget = parseFloat(counter.dataset.min);
@@ -551,8 +588,7 @@
                         const currentMin = Math.floor(minTarget * eased);
                         const currentMax = Math.floor(maxTarget * eased);
 
-                        counter.textContent =
-                            `${currentMin} - ${currentMax}${suffix}`;
+                        counter.textContent = `${currentMin} - ${currentMax}${suffix}`;
                     } else {
                         const target = parseFloat(counter.dataset.target);
                         const decimals = parseInt(counter.dataset.decimals || "0");
@@ -560,8 +596,7 @@
 
                         const current = target * eased;
 
-                        counter.textContent =
-                            `${formatDecimal(current, decimals)}${suffix}`;
+                        counter.textContent = `${formatDecimal(current, decimals)}${suffix}`;
                     }
 
                     if (progress < 1) {

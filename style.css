@@ -14,86 +14,10 @@ body {
     overflow-x: hidden;
 }
 
-.scroll-next {
-    position: fixed;
-
-    left: 50%;
-    bottom: 20px;
-
-    transform: translateX(-50%);
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 10px 18px;
-
-    background: rgba(255, 255, 255, 0.94);
-
-    border-radius: 999px;
-
-    text-decoration: none;
-    cursor: pointer;
-
-    z-index: 9999;
-
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.18);
-
-    opacity: 1;
-
-    transition:
-        opacity 0.45s ease,
-        transform 0.45s ease;
-}
-
-.scroll-next:hover {
-    transform: translateX(-50%) translateY(-2px);
-}
-
-.scroll-next.hidden {
-    opacity: 0;
-    pointer-events: none;
-
-    transform: translateX(-50%) translateY(20px);
-}
-
-.scroll-next span {
-    color: #006b2c;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.scroll-next svg {
-    width: 18px;
-    height: 18px;
-
-    fill: none;
-    stroke: #008c45;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    animation: arrowMove 1.3s infinite;
-}
-
-@keyframes arrowMove {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(4px);
-    }
-}
-
-#dados {
+#inicio,
+#mapa,
+#dados,
+#materias {
     scroll-margin-top: 90px;
 }
 
@@ -113,7 +37,7 @@ header {
 
 .menu {
     display: flex;
-    gap: clamp(42px, 7vw, 120px);
+    gap: clamp(24px, 5vw, 90px);
 }
 
 .nav-btn {
@@ -141,14 +65,124 @@ header {
     font-weight: 600;
 }
 
-/* JOURNEY SECTION */
+/* HERO */
+
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 82vh;
+    min-height: 620px;
+    max-height: 900px;
+    overflow: hidden;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.18),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(247, 244, 223, 0.92) 0%,
+        rgba(247, 244, 223, 0.75) 35%,
+        rgba(247, 244, 223, 0.45) 55%,
+        rgba(247, 244, 223, 0.15) 75%,
+        rgba(247, 244, 223, 0) 85%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-pill {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 16px 26px;
+    border-radius: 999px;
+    margin-bottom: 34px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+.hero-pill::before {
+    content: "";
+    width: 6px;
+    height: 26px;
+    border-radius: 999px;
+    background: #00a651;
+}
+
+.hero-pill span {
+    color: #008c45;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.hero-content h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(64px, 5vw, 110px);
+    font-weight: 800;
+    line-height: 0.95;
+    color: #003d17;
+    margin-bottom: 34px;
+}
+
+.hero-content p {
+    max-width: 620px;
+    font-size: 28px;
+    line-height: 1.4;
+    color: #1f1f1f;
+    margin-bottom: 40px;
+}
+
+/* BARRAS */
+
+.bars {
+    display: flex;
+    margin-bottom: clamp(48px, 6vw, 115px);
+}
+
+.bar {
+    width: clamp(90px, 7vw, 130px);
+    height: clamp(8px, 0.6vw, 11px);
+    border: 1px solid white;
+}
+
+.red {
+    background: #c60000;
+}
+
+.green {
+    background: #008c45;
+}
+
+/* MAPA */
 
 .journey-section {
-    background:
-        linear-gradient(rgba(247, 244, 223, 0.76),
-            rgba(247, 244, 223, 0.76)),
-        url("https://get.pxhere.com/photo/palestine-religion-islam-jerusalem-Aqsa-dome-minaret-history-architecture-building-urban-area-cityscape-landmark-metropolitan-area-city-human-settlement-daytime-metropolis-town-sky-byzantine-architecture-skyline-roof-historic-site-tourism-place-of-worship-basilica-downtown-mosque-landscape-suburb-residential-area-world-tower-unesco-world-heritage-site-1598186.jpg");
-
+    background: rgba(247, 244, 223, 0.92) url("img/hero.jpg");
+    background-blend-mode: lighten;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -173,38 +207,6 @@ header {
     flex-direction: column;
 }
 
-.hero-tag {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    padding: 14px 24px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 999px;
-    color: #008c45;
-    font-weight: 800;
-    font-size: clamp(18px, 1.35vw, 24px);
-    margin-bottom: clamp(18px, 1.6vw, 28px);
-    box-shadow:
-        0 12px 26px rgba(0, 0, 0, 0.08),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-}
-
-.hero-tag::before {
-    content: "";
-    width: 5px;
-    height: 22px;
-    background: #008c45;
-    border-radius: 999px;
-    margin-right: 14px;
-}
-
-.journey-text h4 {
-    color: #008c32;
-    font-size: clamp(20px, 1.45vw, 28px);
-    font-weight: 800;
-    margin-bottom: clamp(16px, 1.4vw, 24px);
-}
-
 .journey-text h1 {
     font-family: 'Raleway', sans-serif;
     font-size: clamp(56px, 5vw, 92px);
@@ -217,67 +219,8 @@ header {
     font-size: clamp(20px, 1.75vw, 30px);
     line-height: 1.2;
     color: #111;
-    margin-bottom: clamp(26px, 3vw, 42px);
+    margin-bottom: clamp(34px, 4vw, 66px);
 }
-
-/* BARS */
-
-.bars {
-    display: flex;
-    margin-bottom: clamp(48px, 6vw, 115px);
-}
-
-.bar {
-    width: clamp(90px, 7vw, 130px);
-    height: clamp(8px, 0.6vw, 11px);
-    border: 1px solid white;
-}
-
-.red {
-    background: #c60000;
-}
-
-.green {
-    background: #008c45;
-}
-
-/* PERSON BOX */
-
-.person-box {
-    width: 100%;
-    max-width: 340px;
-    height: clamp(62px, 4.7vw, 82px);
-    border-radius: 22px;
-    border: 1px solid rgba(0, 0, 0, 0.35);
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow:
-        0 12px 28px rgba(0, 0, 0, 0.12),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-}
-
-.person-box span {
-    display: inline-block;
-    font-size: clamp(26px, 2.2vw, 38px);
-    font-weight: 800;
-    color: #062d14;
-    transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.person-box span.fade-out {
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.person-box span.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* MAP CARD */
 
 .map-card {
     position: relative;
@@ -353,7 +296,46 @@ header {
     transform: scale(1);
 }
 
-/* ROUTES */
+/* CARD DA PESSOA */
+
+.person-card {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 240px;
+    padding: 18px 26px;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 18px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 2px 8px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
+}
+
+.person-card-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: #008c45;
+}
+
+.person-card-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    color: #062d14;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.person-card-name.fade {
+    opacity: 0;
+}
+
+/* ROTAS E MARCADORES */
 
 .route-line {
     fill: none;
@@ -369,8 +351,6 @@ header {
     stroke-width: 10;
     stroke-linecap: round;
 }
-
-/* MARKERS */
 
 .marker {
     opacity: 0;
@@ -390,8 +370,6 @@ header {
     stroke-width: 4;
 }
 
-/* LABELS */
-
 .marker-label rect {
     rx: 10;
     ry: 10;
@@ -401,12 +379,12 @@ header {
 
 .marker-label text {
     fill: white;
-    font-size: clamp(14px, 1vw, 20px);
+    font-size: clamp(19px, 1vw, 20px);
     font-weight: 800;
     letter-spacing: 0.4px;
 }
 
-/* PROGRESS BAR */
+/* PROGRESSO DO MAPA */
 
 .journey-progress {
     position: absolute;
@@ -449,25 +427,11 @@ header {
         box-shadow 0.3s ease;
 }
 
-.progress-dot:nth-child(2) {
-    left: 0%;
-}
-
-.progress-dot:nth-child(3) {
-    left: 25%;
-}
-
-.progress-dot:nth-child(4) {
-    left: 50%;
-}
-
-.progress-dot:nth-child(5) {
-    left: 75%;
-}
-
-.progress-dot:nth-child(6) {
-    left: 100%;
-}
+.progress-dot:nth-child(2) { left: 0%; }
+.progress-dot:nth-child(3) { left: 25%; }
+.progress-dot:nth-child(4) { left: 50%; }
+.progress-dot:nth-child(5) { left: 75%; }
+.progress-dot:nth-child(6) { left: 100%; }
 
 .progress-dot.active {
     background: #008c45;
@@ -488,8 +452,6 @@ header {
     transform: translate(-50%, -50%) scale(1.15);
 }
 
-/* STEPS */
-
 .journey-steps {
     position: relative;
     z-index: 1;
@@ -501,12 +463,71 @@ header {
     height: 65vh;
 }
 
-/* DATA SECTION */
+/* BOTÃO FIXO PARA DADOS */
+
+.scroll-next {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    opacity: 1;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.scroll-next:hover {
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.scroll-next.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(20px);
+}
+
+.scroll-next span {
+    color: #006b2c;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.scroll-next svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #008c45;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: arrowMove 1.3s infinite;
+}
+
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(4px);
+    }
+}
+
+/* DADOS */
 
 .data-section {
     background: linear-gradient(90deg, #062d14, #003d17, #062d14);
     padding: clamp(80px, 7vw, 125px) 24px;
-
     box-shadow:
         0 -18px 45px rgba(0, 0, 0, 0.32),
         0 18px 50px rgba(0, 0, 0, 0.42);
@@ -516,32 +537,22 @@ header {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: clamp(18px, 1.8vw, 28px);
-
     max-width: 1480px;
     margin: 0 auto;
 }
 
 .brown-card {
     min-height: 340px;
-
     background: #884537;
-
     border-radius: 14px;
-
     padding: 34px 22px 30px;
-
     color: white;
-
-    box-shadow:
-        0 14px 24px rgba(0, 0, 0, 0.28);
-
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
     text-align: center;
-
     transition: 0.3s ease;
 }
 
@@ -551,12 +562,10 @@ header {
 
 .card-header {
     min-height: 82px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
     gap: 12px;
 }
 
@@ -570,61 +579,55 @@ header {
     font-size: clamp(12px, 0.85vw, 15px);
     line-height: 1.2;
     font-weight: 800;
-
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
 
 .brown-card h3 {
     min-height: 82px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-family: 'Raleway', sans-serif;
-
     font-size: clamp(24px, 1.9vw, 36px);
     line-height: 1.05;
-
     font-weight: 800;
-
     margin: 18px 0;
 }
 
 .brown-card p {
     min-height: 72px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: clamp(13px, 0.9vw, 15px);
     line-height: 1.35;
-
     max-width: 210px;
-
     opacity: 0.92;
 }
 
-/* ARTICLES */
+/* MATÉRIAS */
 
 .articles {
     padding: clamp(80px, 7vw, 120px) 24px clamp(100px, 8vw, 140px);
-    background: #f7f4df;
+    background: rgba(247, 244, 223, 0.92) url("img/hero.jpg");
+    background-blend-mode: lighten;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .section-title {
-    max-width: 1300px;
+    max-width: 1250px;
     margin: 0 auto 52px;
 }
 
 .section-title h2 {
+    font-family: 'Raleway', sans-serif;
     font-size: clamp(46px, 4vw, 68px);
     line-height: 1;
     margin-bottom: 16px;
     color: #062d14;
-    font-family: 'Raleway', sans-serif;
 }
 
 .section-title p {
@@ -637,7 +640,7 @@ header {
     display: grid;
     grid-template-columns: repeat(4, minmax(210px, 1fr));
     gap: clamp(24px, 2.5vw, 36px);
-    max-width: 1300px;
+    max-width: 1250px;
     margin: 0 auto;
     justify-items: center;
 }
@@ -709,9 +712,9 @@ header {
 /* FOOTER */
 
 footer {
+    height: 100px;
     background: linear-gradient(90deg, #062d14, #003d17, #062d14);
     color: white;
-    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -724,19 +727,176 @@ footer {
     opacity: 0.65;
 }
 
-/* TV / MONITORES MUITO GRANDES */
+/* PÁGINA DE MATÉRIA */
+
+.topic-page {
+    min-height: 100vh;
+    padding: 140px 5vw 80px;
+    background:
+        linear-gradient(rgba(247, 244, 223, 0.76), rgba(247, 244, 223, 0.76)),
+        url("img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.topic-hero {
+    max-width: 1400px;
+    margin: 0 auto 70px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 70px;
+    align-items: flex-start;
+}
+
+.topic-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.topic-info h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(50px, 4vw, 90px);
+    line-height: 0.95;
+    color: #062d14;
+    margin-bottom: clamp(34px, 4vw, 66px);
+}
+
+.topic-info p {
+    font-size: clamp(18px, 1.5vw, 30px);
+    line-height: 1.2;
+    color: #111;
+}
+
+.topic-bars {
+    display: flex;
+    margin-bottom: 34px;
+}
+
+.topic-bar {
+    width: 90px;
+    height: 8px;
+    border: 1px solid white;
+}
+
+.topic-red {
+    background: #c50000;
+}
+
+.topic-green {
+    background: #008c45;
+}
+
+.topic-video-box {
+    position: relative;
+    background: rgba(244, 241, 225, 0.92);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(4px);
+}
+
+.topic-video-box iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+.topic-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 40px;
+}
+
+.topic-text-card,
+.topic-about-card {
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.22),
+        0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+.topic-text-card {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 80px 50px;
+}
+
+.topic-text-card h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 18px;
+}
+
+.topic-text-card p {
+    margin-bottom: 22px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2b2b2b;
+}
+
+.topic-text-card p:last-child {
+    margin-bottom: 0;
+}
+
+.topic-about-card {
+    background: rgba(225, 235, 210, 0.85);
+    padding: 40px;
+}
+
+.topic-about-card h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+    color: #002d12;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* RECORTE DE JORNAL */
+
+.news-clipping {
+    margin: 34px 0;
+    padding: 16px;
+    background: #f8f6ed;
+    border-left: 5px solid #008c45;
+    border-radius: 14px;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+    transform: rotate(-0.4deg);
+}
+
+.news-clipping img {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.92;
+}
+
+.news-clipping figcaption {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4a4a4a;
+    font-style: italic;
+    text-align: center;
+}
+
+/* RESPONSIVO */
 
 @media (min-width: 1920px) {
-    header {
-        height: 78px;
-    }
-
     .journey-content {
         top: 78px;
         min-height: calc(100vh - 78px);
         max-width: 1500px;
         grid-template-columns: minmax(280px, 0.3fr) minmax(650px, 1fr);
-        padding: 52px 64px;
+        padding: 52px 5px;
         gap: 70px;
     }
 
@@ -744,17 +904,8 @@ footer {
         font-size: 78px;
     }
 
-    .journey-text h4 {
-        font-size: 26px;
-    }
-
     .journey-text p {
         font-size: 26px;
-    }
-
-    .hero-tag {
-        font-size: 22px;
-        padding: 14px 24px;
     }
 
     .bars {
@@ -766,22 +917,11 @@ footer {
         height: 8px;
     }
 
-    .person-box {
-        max-width: 290px;
-        height: 64px;
-    }
-
-    .person-box span {
-        font-size: 30px;
-    }
-
     .data-cards,
     .article-cards {
         max-width: 1250px;
     }
 }
-
-/* DESKTOP FULL HD / MONITOR GRANDE */
 
 @media (max-width: 1919px) and (min-width: 1441px) {
     .journey-content {
@@ -795,30 +935,12 @@ footer {
         font-size: 68px;
     }
 
-    .journey-text h4 {
-        font-size: 23px;
-    }
-
     .journey-text p {
         font-size: 23px;
     }
 
-    .hero-tag {
-        font-size: 20px;
-        padding: 12px 22px;
-    }
-
     .bars {
         margin-bottom: 48px;
-    }
-
-    .person-box {
-        max-width: 260px;
-        height: 58px;
-    }
-
-    .person-box span {
-        font-size: 27px;
     }
 
     .data-cards,
@@ -827,136 +949,10 @@ footer {
     }
 }
 
-/* NOTEBOOK PEQUENO */
-
-@media (max-width: 1280px) {
-    .menu {
-        gap: 54px;
-    }
-
-    .nav-btn span {
-        font-size: 17px;
-    }
-
-    .nav-btn img {
-        width: 22px;
-    }
-
-    .journey-content {
-        max-width: 1180px;
-        grid-template-columns: minmax(205px, 0.26fr) minmax(470px, 1fr);
-        padding: 28px 36px;
-        gap: 36px;
-    }
-
-    .journey-text h4 {
-        font-size: 19px;
-    }
-
-    .journey-text h1 {
-        font-size: 52px;
-        margin-bottom: 28px;
-    }
-
-    .journey-text p {
-        font-size: 19px;
-    }
-
-    .hero-tag {
-        font-size: 18px;
-        padding: 10px 18px;
-    }
-
-    .hero-tag::before {
-        height: 18px;
-    }
-
-    .bars {
-        margin-bottom: 36px;
-    }
-
-    .bar {
-        width: 88px;
-        height: 8px;
-    }
-
-    .person-box {
-        max-width: 245px;
-        height: 56px;
-    }
-
-    .person-box span {
-        font-size: 25px;
-    }
-
-    .data-cards {
-        max-width: 1050px;
-        gap: 28px;
-    }
-
-    .brown-card {
-        padding: 42px 28px 34px;
-    }
-
-    .brown-card h3 {
-        font-size: 30px;
-        margin-bottom: 55px;
-    }
-}
-
-/* TABLET / TELAS MÉDIAS */
-
-@media (max-width: 1050px) {
-    .journey-content {
-        grid-template-columns: 1fr;
-        gap: 26px;
-        padding: 30px 28px;
-        align-content: center;
-    }
-
-    .journey-text {
-        align-items: center;
-        text-align: center;
-    }
-
-    .journey-text h1 {
-        font-size: 46px;
-        margin-bottom: 20px;
-    }
-
-    .journey-text p {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .hero-tag {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .bars {
-        margin-bottom: 20px;
-    }
-
-    .person-box {
-        max-width: 300px;
-    }
-
-    .data-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .article-cards {
-        grid-template-columns: repeat(2, minmax(230px, 1fr));
-    }
-}
-
 @media (max-width: 1440px) and (min-width: 1051px) {
     .scroll-next {
         bottom: 12px;
-
         padding: 8px 12px 8px 18px;
-
         transform: translateX(-50%) scale(0.88);
     }
 
@@ -968,12 +964,7 @@ footer {
         font-size: 12px;
     }
 
-    .scroll-arrow {
-        width: 30px;
-        height: 30px;
-    }
-
-    .scroll-arrow svg {
+    .scroll-next svg {
         width: 18px;
         height: 18px;
     }
@@ -1002,7 +993,102 @@ footer {
     }
 }
 
-/* MOBILE */
+@media (max-width: 1280px) {
+    .menu {
+        gap: 54px;
+    }
+
+    .nav-btn img {
+        width: 22px;
+    }
+
+    .nav-btn span {
+        font-size: 17px;
+    }
+
+    .journey-content {
+        max-width: 1180px;
+        grid-template-columns: minmax(205px, 0.26fr) minmax(470px, 1fr);
+        padding: 28px 36px;
+        gap: 36px;
+    }
+
+    .journey-text h1 {
+        font-size: 52px;
+        margin-bottom: 28px;
+    }
+
+    .journey-text p {
+        font-size: 19px;
+    }
+
+    .bars {
+        margin-bottom: 36px;
+    }
+
+    .bar {
+        width: 88px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .topic-hero,
+    .topic-content {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-info {
+        text-align: center;
+        align-items: center;
+    }
+
+    .topic-bars {
+        justify-content: center;
+    }
+
+    .topic-info p {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .journey-content {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding: 30px 28px;
+        align-content: center;
+    }
+
+    .journey-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .journey-text h1 {
+        font-size: 46px;
+        margin-bottom: 20px;
+    }
+
+    .journey-text p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .bars {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .person-card {
+        align-self: center;
+    }
+
+    .data-cards,
+    .article-cards {
+        grid-template-columns: repeat(2, minmax(230px, 1fr));
+    }
+}
 
 @media (max-width: 700px) {
     header {
@@ -1028,6 +1114,36 @@ footer {
         font-size: 14px;
     }
 
+    .hero-banner {
+        height: 76vh;
+        min-height: 520px;
+    }
+
+    .hero-content {
+        padding: 0 24px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .hero-pill {
+        padding: 10px 18px;
+    }
+
+    .hero-pill span {
+        font-size: 16px;
+    }
+
+    .hero-pill::before {
+        width: 4px;
+        height: 16px;
+    }
+
     .journey-section {
         min-height: 420vh;
     }
@@ -1038,10 +1154,6 @@ footer {
         padding: 22px 16px;
     }
 
-    .journey-text h4 {
-        font-size: 17px;
-    }
-
     .journey-text h1 {
         font-size: 38px;
     }
@@ -1050,28 +1162,18 @@ footer {
         font-size: 15px;
     }
 
-    .hero-tag {
-        font-size: 16px;
-        padding: 9px 16px;
-    }
-
-    .hero-tag::before {
-        width: 4px;
-        height: 16px;
-        margin-right: 10px;
-    }
-
     .bar {
         width: 70px;
         height: 7px;
     }
 
-    .person-box {
-        height: 54px;
+    .person-card {
+        min-width: 220px;
+        padding: 16px 22px;
     }
 
-    .person-box span {
-        font-size: 23px;
+    .person-card-name {
+        font-size: 30px;
     }
 
     .map-card {
@@ -1116,10 +1218,6 @@ footer {
         text-align: center;
     }
 
-    .section-title .bars {
-        justify-content: center;
-    }
-
     .section-title h2 {
         font-size: 42px;
     }
@@ -1128,284 +1226,15 @@ footer {
         font-size: 17px;
     }
 
+    .topic-page {
+        padding: 90px 22px 60px;
+    }
+
+    .topic-text-card {
+        padding: 44px 28px;
+    }
+
     footer {
         height: 90px;
-    }
-}
-
-/* ===========================
-   PÁGINA DE TEMA
-=========================== */
-
-.topic-page {
-    position: relative;
-
-    min-height: 100vh;
-
-    padding: 140px 5vw 80px;
-
-    background:
-        linear-gradient(rgba(247, 244, 223, 0.76),
-            rgba(247, 244, 223, 0.76)),
-        url("https://get.pxhere.com/photo/palestine-religion-islam-jerusalem-Aqsa-dome-minaret-history-architecture-building-urban-area-cityscape-landmark-metropolitan-area-city-human-settlement-daytime-metropolis-town-sky-byzantine-architecture-skyline-roof-historic-site-tourism-place-of-worship-basilica-downtown-mosque-landscape-suburb-residential-area-world-tower-unesco-world-heritage-site-1598186.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* HERO */
-
-.topic-hero {
-    max-width: 1400px;
-
-    margin: 0 auto 70px;
-
-    display: grid;
-    grid-template-columns: 380px 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-}
-
-.topic-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.topic-info h1 {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(50px, 4vw, 90px);
-    line-height: 0.95;
-    color: #062d14;
-    margin-bottom: clamp(34px, 4vw, 66px);
-}
-
-.topic-bars {
-    display: flex;
-    margin-bottom: 34px;
-}
-
-.topic-bar {
-    height: 8px;
-    width: 90px;
-    border-top: 1px solid rgba(255, 255, 255, .7);
-        border: 1px solid white;
-}
-
-.topic-red {
-    background: #c50000;
-}
-
-.topic-green {
-    background: #008c45;
-}
-
-.topic-info p {
-    font-size: clamp(18px, 24px, 30px);
-    line-height: 1.2;
-    color: #111;
-}
-
-/* VIDEO */
-
-.topic-video-box {
-    position: relative;
-
-    background: rgba(244, 241, 225, .92);
-
-    border-radius: 28px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, .18);
-
-    border: 1px solid rgba(0, 0, 0, .15);
-
-    backdrop-filter: blur(4px);
-}
-
-.topic-video-box::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(circle at center,
-            rgba(0, 140, 69, .08),
-            transparent 70%);
-
-    pointer-events: none;
-}
-
-.topic-video-box iframe {
-    display: block;
-
-    width: 100%;
-
-    aspect-ratio: 16/9;
-
-    border: none;
-}
-
-.video-fallback {
-    position: relative;
-    background: #000;
-}
-
-.video-fallback a {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    color: white;
-    text-decoration: none;
-}
-
-.video-fallback img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    opacity: 0.78;
-}
-
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 76px;
-    height: 76px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    transform: translate(-50%, -50%);
-}
-
-.play-button::before {
-    content: "";
-
-    position: absolute;
-    top: 50%;
-    left: 54%;
-
-    transform: translate(-50%, -50%);
-
-    border-left: 22px solid #000;
-    border-top: 14px solid transparent;
-    border-bottom: 14px solid transparent;
-}
-
-.video-fallback strong {
-    position: absolute;
-    left: 50%;
-    bottom: 34px;
-
-    transform: translateX(-50%);
-
-    font-size: 20px;
-    font-weight: 800;
-
-    text-shadow: 0 3px 12px rgba(0, 0, 0, .8);
-}
-
-/* CONTEÚDO */
-
-.topic-content {
-    max-width: 1400px;
-
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 1fr 360px;
-
-    gap: 40px;
-}
-
-.topic-text-card {
-    background: rgba(255, 255, 255, .75);
-    backdrop-filter: blur(10px);
-    border-radius: 22px;
-    padding: 80px 50px 80px 50px;
-}
-
-.topic-text-card h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 30px;
-    font-weight: 600;
-    color: #000;
-    margin: 0 0 18px 0;
-}
-
-.topic-text-card p {
-    margin-bottom: 22px;
-
-    font-size: 18px;
-    line-height: 1.8;
-
-    color: #2b2b2b;
-}
-
-.topic-text-card p:last-child {
-    margin-bottom: 0;
-}
-
-.topic-about-card {
-    background: rgba(225, 235, 210, .85);
-    backdrop-filter: blur(10px);
-    border-radius: 22px;
-    padding: 40px;
-}
-
-.topic-text-card,
-.topic-about-card {
-    box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.22),
-        0 10px 25px rgba(0, 0, 0, 0.10);
-}
-
-.topic-about-card h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 2rem;
-    color: #002d12;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* RESPONSIVO */
-
-@media (max-width: 1100px) {
-
-    .topic-hero {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .topic-content {
-        grid-template-columns: 1fr;
-    }
-
-    .topic-info {
-        text-align: center;
-        align-items: center;
-    }
-
-    .topic-bars {
-        justify-content: center;
-    }
-
-    .topic-info p {
-        max-width: 600px;
     }
 }
