@@ -995,6 +995,27 @@ footer {
         font-size: 11px;
         max-width: 150px;
     }
+
+    .hero-pill {
+        padding: 9px 16px;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .hero-pill::before {
+        width: 4px;
+        height: 17px;
+    }
+
+    .hero-pill span {
+        font-size: 15px;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+        max-width: 480px;
+        line-height: 1.32;
+    }
 }
 
 @media (max-width: 1280px) {
@@ -1091,29 +1112,6 @@ footer {
     .data-cards,
     .article-cards {
         grid-template-columns: repeat(2, minmax(230px, 1fr));
-    }
-}
-
-@media (max-width: 1280px) and (min-width: 1051px) {
-    .hero-pill {
-        padding: 9px 16px;
-        gap: 10px;
-        margin-bottom: 24px;
-    }
-
-    .hero-pill::before {
-        width: 4px;
-        height: 17px;
-    }
-
-    .hero-pill span {
-        font-size: 15px;
-    }
-
-    .hero-content p {
-        font-size: 20px;
-        max-width: 480px;
-        line-height: 1.32;
     }
 }
 
