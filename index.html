@@ -616,17 +616,34 @@
         });
 
         const scrollNext = document.querySelector(".scroll-next");
+        const scrollNext = document.querySelector(".scroll-next");
+        const mapSection = document.querySelector("#mapa");
         const dataSection = document.querySelector("#dados");
 
         function toggleScrollNext() {
-            const dataTop = dataSection.getBoundingClientRect().top;
+            const mapRect = mapSection.getBoundingClientRect();
+            const dataRect = dataSection.getBoundingClientRect();
 
-            if (dataTop <= window.innerHeight * 0.75) {
-                scrollNext.classList.add("hidden");
-            } else {
+            const isInsideMap =
+                mapRect.top <= window.innerHeight * 0.35 &&
+                mapRect.bottom >= window.innerHeight * 0.45;
+
+            const isBeforeData =
+                dataRect.top > window.innerHeight * 0.75;
+
+            if (isInsideMap && isBeforeData) {
+                scrollNext.classList.add("visible");
                 scrollNext.classList.remove("hidden");
+            } else {
+                scrollNext.classList.remove("visible");
+                scrollNext.classList.add("hidden");
             }
         }
+
+window.addEventListener("scroll", toggleScrollNext);
+window.addEventListener("resize", toggleScrollNext);
+
+toggleScrollNext();
 
         window.addEventListener("scroll", toggleScrollNext);
         window.addEventListener("resize", toggleScrollNext);
