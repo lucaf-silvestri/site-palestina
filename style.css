@@ -467,54 +467,89 @@ header {
 
 .scroll-next {
     position: fixed;
+
     left: 50%;
     bottom: 20px;
-    transform: translateX(-50%);
+
+    transform: translateX(-50%) translateY(20px);
+
     display: flex;
     align-items: center;
     gap: 10px;
+
     padding: 10px 18px;
+
     background: rgba(255, 255, 255, 0.94);
+
     border-radius: 999px;
+
     text-decoration: none;
     cursor: pointer;
+
     z-index: 9999;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.18);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0.45s ease;
+}
+
+.scroll-next.visible {
     opacity: 1;
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateX(-50%) translateY(0);
+}
+
+.scroll-next.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateX(-50%) translateY(20px);
 }
 
 .scroll-next:hover {
     transform: translateX(-50%) translateY(-2px);
 }
 
-.scroll-next.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%) translateY(20px);
-}
-
 .scroll-next span {
     color: #006b2c;
+
     font-size: 13px;
     font-weight: 800;
+
     text-transform: uppercase;
     letter-spacing: 0.5px;
+
+    white-space: nowrap;
 }
 
 .scroll-next svg {
     width: 18px;
     height: 18px;
+
     fill: none;
     stroke: #008c45;
     stroke-width: 3;
     stroke-linecap: round;
     stroke-linejoin: round;
+
     animation: arrowMove 1.3s infinite;
 }
 
 @keyframes arrowMove {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
