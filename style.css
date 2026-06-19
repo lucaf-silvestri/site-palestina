@@ -1316,8 +1316,20 @@ footer {
     }
 
     .marker-label text {
-        font-size: 15px;
+        font-size: 30px;
     }
+
+    .marker-label rect {
+    rx: 10;
+    ry: 10;
+    opacity: 0.96;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.22));
+    width: 130px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
     .data-section,
     .articles {
