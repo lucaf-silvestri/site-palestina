@@ -416,30 +416,58 @@
         }
 
         function createLabel(place, point, color) {
-            const width = place.length > 12 ? 220 : 120;
+
+            const isMobile = window.innerWidth <= 700;
+
+            let width;
+            let height;
+            let textY;
+
+            if (isMobile) {
+
+                width = Math.max(
+                    180,
+                    (place.length * 24) + 80
+                );
+
+                height = 65;
+                textY = point.y + 8;
+
+            } else {
+
+                width = place.length > 12 ? 220 : 120;
+
+                height = 38;
+                textY = point.y - 2;
+            }
 
             return `
-            <g class="marker">
-                <circle cx="${point.x}" cy="${point.y}" r="8" fill="${color}" />
-
-                <g class="marker-label">
-                    <rect
-                        x="${point.x + 13}"
-                        y="${point.y - 27}"
-                        width="${width}"
-                        height="38"
+                <g class="marker">
+                    <circle
+                        cx="${point.x}"
+                        cy="${point.y}"
+                        r="8"
                         fill="${color}"
                     />
-
-                    <text
-                        x="${point.x + 30}"
-                        y="${point.y - 2}"
-                    >
-                        ${place}
-                    </text>
+                
+                    <g class="marker-label">
+                        <rect
+                            x="${point.x + 13}"
+                            y="${point.y - 27}"
+                            width="${width}"
+                            height="${height}"
+                            fill="${color}"
+                        />
+                    
+                        <text
+                            x="${point.x + 30}"
+                            y="${textY}"
+                        >
+                            ${place}
+                        </text>
+                    </g>
                 </g>
-            </g>
-        `;
+            `;
         }
 
         async function animatePerson(index) {
