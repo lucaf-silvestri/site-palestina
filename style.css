@@ -1309,13 +1309,9 @@ footer {
     }
 
     .img-clipping {
-        margin: 34px 0;
-        background: #f8f6ed;
-        border-left: 5px solid #008c45;
-        border-radius: 14px;
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
-        justify-self: center;
-        width: 100%;
+        width: 110%;
+        max-width: 100%;
+        padding: 0;
     }
 
     .topic-text-card h2 {
