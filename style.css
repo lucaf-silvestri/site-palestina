@@ -5,7 +5,7 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
 }
 
 body {
@@ -1346,7 +1346,7 @@ footer {
         justify-content: flex-start;
         align-items: center;
         padding: 15px 20px;
-        position: fixed;
+        position: sticky;
         z-index: 1000;
         /* ADICIONE ESSAS DUAS LINHAS: */
         transform: translateZ(0);
