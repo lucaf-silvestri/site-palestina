@@ -1300,26 +1300,89 @@ footer {
 
 @media (max-width: 700px) {
     header {
-        height: auto;
-        padding: 12px;
+        height: 74px;
+        padding: 0 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .img-clipping {
+        margin: 34px 0;
+        background: #f8f6ed;
+        border-left: 5px solid #008c45;
+        border-radius: 14px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+        justify-self: center;
+        width: 100%;
+    }
+
+    .topic-text-card h2 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .news-clipping blockquote {
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .menu-toggle {
+        display: block;
     }
 
     .menu {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
+        position: fixed;
+
+        top: 74px;
+        left: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 0;
+
+        background: rgba(247, 244, 223, .98);
+
+        backdrop-filter: blur(10px);
+
+        padding: 20px;
+
+        transform: translateY(-120%);
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            transform .35s ease,
+            opacity .35s ease;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, .15);
+
+        z-index: 10000;
+    }
+
+    .menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .nav-btn {
-        padding: 8px 10px;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 14px 18px;
     }
 
     .nav-btn img {
-        width: 20px;
+        width: 22px;
     }
 
     .nav-btn span {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .hero-banner {
@@ -1416,6 +1479,13 @@ footer {
 
     }
 
+    .topic-info {
+        text-align: center;
+        align-items: center;
+        border: none;
+        padding: 0;
+    }
+
     .topic-info h1 {
         font-family: 'Raleway', sans-serif;
         font-size: clamp(30px, 3vw, 75px);
@@ -1465,4 +1535,47 @@ footer {
     footer {
         height: 90px;
     }
+}
+
+/* HAMBURGER */
+
+.menu-toggle {
+    display: none;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 10001;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 28px;
+    height: 3px;
+
+    margin: 5px auto;
+
+    background: #062d14;
+
+    border-radius: 999px;
+
+    transition: .3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
