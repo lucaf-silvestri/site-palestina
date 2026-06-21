@@ -21,7 +21,6 @@
 <body id="inicio">
 
     <header>
-
         <button class="menu-toggle" aria-label="Abrir menu">
             <span></span>
             <span></span>
@@ -29,7 +28,6 @@
         </button>
 
         <nav class="menu">
-
             <a href="#inicio" class="nav-btn">
                 <img src="img/icone-home.png" alt="">
                 <span>Início</span>
@@ -49,9 +47,7 @@
                 <img src="img/icone-materias.png" alt="">
                 <span>Matérias</span>
             </a>
-
         </nav>
-
     </header>
 
     <section class="hero-banner">
@@ -666,6 +662,25 @@
             }
         }
 
+        // Lógica do Menu Hambúrguer
+        const menuToggle = document.querySelector(".menu-toggle");
+        const menu = document.querySelector(".menu");
+        const navLinks = document.querySelectorAll(".nav-btn");
+
+        // Abre ou fecha o menu ao clicar no botão hambúrguer
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            menu.classList.toggle("open");
+        });
+
+        // Fecha o menu automaticamente ao clicar em qualquer link (âncora)
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                menuToggle.classList.remove("active");
+                menu.classList.remove("open");
+            });
+        });
+
         window.addEventListener("scroll", toggleScrollNext);
         window.addEventListener("resize", toggleScrollNext);
 
@@ -675,36 +690,6 @@
         window.addEventListener("resize", updateJourneyByScroll);
 
         updateJourneyByScroll();
-
-        if (menuToggle && menu) {
-
-            menuToggle.addEventListener("click", () => {
-
-                menu.classList.toggle("open");
-                menuToggle.classList.toggle("active");
-
-            });
-
-        }
-
-        menuToggle.addEventListener("click", () => {
-
-            menu.classList.toggle("open");
-            menuToggle.classList.toggle("active");
-
-        });
-
-        document.querySelectorAll(".nav-btn")
-            .forEach(link => {
-
-                link.addEventListener("click", () => {
-
-                    menu.classList.remove("open");
-                    menuToggle.classList.remove("active");
-
-                });
-
-            });
     </script>
 
 </body>
