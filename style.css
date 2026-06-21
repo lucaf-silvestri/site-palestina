@@ -1346,7 +1346,7 @@ footer {
         justify-content: flex-start;
         align-items: center;
         padding: 15px 20px;
-        position: relative;
+        position: sticky;
         z-index: 1000;
     }
 
