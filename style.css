@@ -780,52 +780,69 @@ footer {
 .topic-page {
     min-height: 100vh;
     padding: 140px 5vw 80px;
+
     background:
-        linear-gradient(rgba(247, 244, 223, 0.76), rgba(247, 244, 223, 0.76)),
+        linear-gradient(rgba(247, 244, 223, 0.76),
+            rgba(247, 244, 223, 0.76)),
         url("img/hero.jpg");
+
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
+/* HERO DA MATÉRIA */
+
 .topic-hero {
     max-width: 1400px;
-    margin: 0 auto 70px;
-    align-items: flex-start;
+    margin: 0 auto 80px;
 }
 
 .topic-info {
+    max-width: 950px;
+    padding-left: 28px;
+    border-left: 6px solid #008c45;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 60px;
 }
 
 .topic-info h1 {
     font-family: 'Raleway', sans-serif;
-    font-size: clamp(50px, 3vw, 90px);
+    font-size: clamp(58px, 3vw, 92px);
     line-height: 0.95;
+    font-weight: 800;
     color: #062d14;
-    margin-bottom: clamp(34px, 4vw, 66px);
-    max-width: 55vw;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.45);
 }
 
 .topic-info p {
+    margin-top: 24px;
+
     font-size: clamp(18px, 1.5vw, 30px);
-    line-height: 1.2;
+    line-height: 1.4;
+
     color: #111;
+
+    max-width: 800px;
 }
+
+/* BARRAS PALESTINA */
 
 .topic-bars {
     display: flex;
-    margin-bottom: 34px;
-    align-self: center;
+    align-items: center;
+
+    margin-bottom: 22px;
 }
 
 .topic-bar {
     width: 90px;
     height: 8px;
-    border: 1px solid white;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .topic-red {
@@ -836,14 +853,22 @@ footer {
     background: #008c45;
 }
 
+/* VÍDEO */
+
 .topic-video-box {
     position: relative;
+
     background: rgba(244, 241, 225, 0.92);
+
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+
     border: 1px solid rgba(0, 0, 0, 0.15);
+
     backdrop-filter: blur(4px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.18);
 }
 
 .topic-video-box iframe {
@@ -853,6 +878,8 @@ footer {
     border: none;
 }
 
+/* CONTEÚDO */
+
 .topic-content {
     max-width: 1400px;
     margin: 0 auto;
@@ -861,7 +888,9 @@ footer {
 .topic-text-card,
 .topic-about-card {
     border-radius: 22px;
+
     backdrop-filter: blur(10px);
+
     box-shadow:
         0 30px 70px rgba(0, 0, 0, 0.22),
         0 10px 25px rgba(0, 0, 0, 0.10);
@@ -876,20 +905,26 @@ footer {
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-weight: 600;
+
     color: #000;
+
     margin-bottom: 18px;
 }
 
 .topic-text-card p {
     margin-bottom: 22px;
+
     font-size: 18px;
     line-height: 1.8;
+
     color: #2b2b2b;
 }
 
 .topic-text-card p:last-child {
     margin-bottom: 0;
 }
+
+/* SOBRE */
 
 .topic-about-card {
     background: rgba(225, 235, 210, 0.85);
@@ -899,8 +934,11 @@ footer {
 .topic-about-card h2 {
     font-family: 'Raleway', sans-serif;
     font-size: 2rem;
+
     color: #002d12;
+
     margin-bottom: 20px;
+
     text-align: center;
 }
 
@@ -992,6 +1030,14 @@ footer {
     border-left: 5px solid #008c45;
     border-radius: 14px;
     box-shadow: 0 14px 32px rgba(0, 0, 0, .16);
+}
+
+.gallery-house figcaption {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #4a4a4a;
+    font-style: italic;
+    text-align: center;
 }
 
 .gallery-house>img {
