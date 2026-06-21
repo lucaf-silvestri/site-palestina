@@ -220,6 +220,9 @@ header {
 /* MAPA */
 
 .journey-section {
+    /* ADICIONE ESSAS DUAS LINHAS: */
+    transform: translateZ(0);
+    will-change: transform;
     background: rgba(247, 244, 223, 0.92) url("img/hero.webp");
     background-blend-mode: lighten;
     background-size: cover;
@@ -703,6 +706,9 @@ header {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    /* ADICIONE ESSAS DUAS LINHAS: */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .section-title {
@@ -830,6 +836,9 @@ footer {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    /* ADICIONE ESSAS DUAS LINHAS: */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* HERO DA MATÉRIA */
@@ -1348,9 +1357,6 @@ footer {
         padding: 15px 20px;
         position: sticky;
         z-index: 1000;
-        /* ADICIONE ESSAS DUAS LINHAS: */
-        transform: translateZ(0);
-        will-change: transform;
     }
 
     .img-clipping {
