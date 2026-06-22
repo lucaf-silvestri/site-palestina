@@ -37,13 +37,13 @@ header {
 
 .person-card-name {
     cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: inline-block;
 }
 
 .person-card-name:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+    opacity: 0.9;
+    transform: scale(1.03);
 }
 
 /* 2. Estilização do container do botão hambúrguer */
