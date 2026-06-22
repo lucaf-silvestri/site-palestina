@@ -38,10 +38,12 @@ header {
 .person-card-name {
     cursor: pointer;
     transition: text-shadow 0.25s ease;
+    text-decoration: none;
 }
 
 .person-card-name:hover {
-    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+    color: #008C45;
+    transform: translateY(-2px);
 }
 
 /* 2. Estilização do container do botão hambúrguer */
