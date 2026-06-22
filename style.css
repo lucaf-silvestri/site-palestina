@@ -57,6 +57,7 @@ header {
 
 .article-btn:active {
     transform: translateY(-1px) scale(0.98);
+    color: red;
 }
 
 /* 2. Estilização do container do botão hambúrguer */
