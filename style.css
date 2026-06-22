@@ -47,6 +47,10 @@ header {
     transform: translateY(-2px);
 }
 
+.person-card-name:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
 /* 2. Estilização do container do botão hambúrguer */
 .menu-toggle {
     display: none;
