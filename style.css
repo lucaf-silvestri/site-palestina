@@ -37,7 +37,7 @@ header {
 
 .person-card-name {
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s ease;
     text-decoration: none;
 }
 
