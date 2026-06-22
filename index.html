@@ -99,9 +99,9 @@
                         Jornada de
                     </span>
 
-                    <span class="person-card-name" id="personName">
+                    <a class="person-card-name" id="personName" href="materia3.html">
                         Miassar
-                    </span>
+                    </a>
                 </div>
             </div>
 
@@ -352,6 +352,7 @@
             if (token !== nameAnimationToken) return;
 
             personName.textContent = name;
+            personName.href = personPages[name] || "#";
 
             requestAnimationFrame(() => {
                 personName.classList.remove("fade");
@@ -635,6 +636,14 @@
         counters.forEach(counter => {
             counterObserver.observe(counter);
         });
+
+        const personPages = {
+            "Basel": "materia2.html",
+            "Rafat": "materia1.html",
+            "Assmaa": "materia1.html",
+            "Miassar": "materia3.html",
+            "Baraah": "materia3.html"
+        };
 
         const scrollNext = document.querySelector(".scroll-next");
         const mapSection = document.querySelector("#mapa");
