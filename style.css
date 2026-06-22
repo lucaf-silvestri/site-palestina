@@ -155,12 +155,7 @@ header {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg,
-            rgba(247, 244, 223, 0.92) 0%,
-            rgba(247, 244, 223, 0.75) 35%,
-            rgba(247, 244, 223, 0.45) 55%,
-            rgba(247, 244, 223, 0.15) 75%,
-            rgba(247, 244, 223, 0) 85%);
+    background: linear-gradient(90deg, rgba(247, 244, 223, 0.92) 0%, rgba(247, 244, 223, 0.75) 50%, rgba(247, 244, 223, 0.45) 65%, rgba(247, 244, 223, 0.15) 85%, rgba(247, 244, 223, 0) 95%);
     z-index: 1;
 }
 
