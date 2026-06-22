@@ -39,6 +39,7 @@ header {
     cursor: pointer;
     transition: opacity 0.25s ease, transform 0.25s ease;
     display: inline-block;
+    text-decoration: none;
 }
 
 .person-card-name:hover {
