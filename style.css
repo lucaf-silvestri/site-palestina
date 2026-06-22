@@ -35,6 +35,17 @@ header {
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
 }
 
+.person-card-name {
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.person-card-name:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 /* 2. Estilização do container do botão hambúrguer */
 .menu-toggle {
     display: none;
