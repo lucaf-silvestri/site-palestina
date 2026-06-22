@@ -21,6 +21,10 @@ body {
     scroll-margin-top: 90px;
 }
 
+.scroll-next visible:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
 /* HEADER */
 
 header {
@@ -110,6 +114,10 @@ header {
 
 .nav-btn:hover {
     background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-btn:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
 .nav-btn img {
